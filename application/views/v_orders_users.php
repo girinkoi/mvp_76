@@ -15,74 +15,102 @@
 
     <!-- SB Admin 2 CSS -->
     <link rel="stylesheet" href="<?= base_url('main_assets/assets/css/sb-admin-2.min.css') ?>">
-
-    <!-- DataTables CSS (kalau memang dipakai) -->
-    <link rel="stylesheet" href="<?= base_url('main_assets/assets/vendor/datatables/dataTables.bootstrap4.min.css') ?>">
 </head>
 
 <body id="page-top" class="bg-light">
 
-<section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <a class="btn btn-danger" href="<?= site_url('login/logout') ?>">
-                <i class="fas fa-sign-out-alt"></i> Logout
-            </a>
-            <a class="btn btn-danger" href="<?= site_url('history/user') ?>">
-                <i class=""></i> history
-            </a>
-        </div>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+        <a class="navbar-brand font-weight-bold text-success">
+            <i class="fas fa-leaf"></i> Mvp76
+        </a>
 
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= site_url('history/user') ?>">
+                        <i class="fas fa-history"></i> History
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="btn btn-outline-danger btn-sm"
+                       href="<?= site_url('login/logout') ?>">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Content -->
+<section class="py-5">
+    <div class="container">
+
+        <div class="row row-cols-2 row-cols-md-3 row-cols-xl-4">
+
             <?php foreach ($list_tanaman as $tanaman): ?>
             <?php
                 $status = $tanaman->status;
-                $badge_class = 'bg-secondary';
+                $badge_class = 'secondary';
 
                 if ($status == 'ready') {
-                    $badge_class = 'bg-success';
+                    $badge_class = 'success';
                 } elseif ($status == 'pending') {
-                    $badge_class = 'bg-warning';
+                    $badge_class = 'warning';
                 } elseif ($status == 'sold') {
-                    $badge_class = 'bg-danger';
+                    $badge_class = 'danger';
                 }
             ?>
-            <div class="col mb-5">
-                <div class="card h-100 shadow-sm">
-                    <div class="badge <?= $badge_class ?> text-white position-absolute"
-                         style="top: 0.5rem; right: 0.5rem">
-                        <?= strtoupper($status) ?>
-                    </div>
 
+            <div class="col mb-4">
+                <div class="card h-100 shadow-sm">
+                    <span class="badge badge-<?= $badge_class ?> position-absolute m-2">
+                        <?= strtoupper($status) ?>
+                    </span>
                     <img class="card-img-top"
                          src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                         alt="...">
+                         alt="<?= $tanaman->name ?>">
 
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <h5 class="fw-bolder">
-                                <?= $tanaman->name ?>
-                            </h5>
-                            <p class="text-muted mb-1">Tanaman Hias</p>
-                            <span class="font-weight-bold text-success">
-                                Rp<?= number_format($tanaman->price,0,',','.') ?>
-                            </span>
-                        </div>
+                    <div class="card-body text-center">
+                        <h6 class="font-weight-bold mb-1">
+                            <?= $tanaman->name ?>
+                        </h6>
+                        <p class="text-muted small mb-2">
+                            Tanaman Hias
+                        </p>
+                        <h5 class="text-success font-weight-bold mb-0">
+                            Rp<?= number_format($tanaman->price,0,',','.') ?>
+                        </h5>
                     </div>
 
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center">
-                            <a class="btn btn-outline-primary mt-auto"
-                               href="<?= site_url('orders/pesan/' . $tanaman->id); ?>">
-                                <i class="fas fa-shopping-cart"></i> Add to cart
-                            </a>
-                        </div>
-                    </div>  
+                    <div class="card-footer bg-white border-0 text-center">
+                        <a class="btn btn-outline-primary mt-auto"
+                           href="<?= site_url('orders/pesan/' . $tanaman->id); ?>">
+                            <i class="fas fa-shopping-cart"></i> Add to Cart
+                        </a>
+                    </div>
+
                 </div>
             </div>
+
             <?php endforeach; ?>
+
         </div>
     </div>
 </section>
+
+<!-- Bootstrap core JavaScript -->
+<script src="<?= base_url('main_assets/assets/vendor/jquery/jquery.min.js') ?>"></script>
+<script src="<?= base_url('main_assets/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+
 </body>
 </html>

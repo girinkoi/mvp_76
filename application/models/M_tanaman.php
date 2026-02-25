@@ -5,7 +5,10 @@ class M_tanaman extends CI_Model {
 
     public function get_all_tanaman()
     {
-        return $this->db->get('plants')->result();
+        $this->db->where_in('status', ['ready', 'pending']);
+        $query = $this->db->get('plants');
+
+        return $query->result();    
     }
 
     public function add_tanaman($data)

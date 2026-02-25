@@ -22,19 +22,41 @@
 
 <body id="page-top" class="bg-light">
 
-<!-- Begin Page Content -->
-<div class="container-fluid min-vh-100 d-flex align-items-start justify-content-center pt-5">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+        <a class="navbar-brand font-weight-bold text-success" href="<?= site_url('orders') ?>">
+            <i class="fas fa-leaf"></i> Mvp76
+        </a>
 
-    <div class="row w-100 justify-content-center">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="<?= site_url('history/user') ?>">
+                        <i class="fas fa-history"></i> History
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="container py-5">
+
+    <div class="row justify-content-center">
         <div class="col-lg-8 col-md-10">
 
-            <div class="mb-3 d-flex justify-content-between">
-                <a href="<?= site_url('orders') ?>" class="btn btn-secondary">
-                    <i class="fas fa-arrow-left"></i> Back
+            <div class="mb-3">
+                <a href="<?= site_url('orders') ?>" class="btn btn-secondary btn-sm">
+                    <i class="fas fa-arrow-left"></i> Back to Produk
                 </a>
             </div>
 
-            <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3 text-center">
                     <h6 class="m-0 font-weight-bold text-primary">
@@ -46,9 +68,9 @@
                     <div class="table-responsive">
 
                         <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
+                            <thead class="thead-light">
                                 <tr>
-                                    <th>Nama pembeli</th>
+                                    <th>Nama Pembeli</th>
                                     <th>Tanaman</th>
                                     <th>Harga</th>
                                 </tr>
@@ -74,20 +96,7 @@
     </div>
 
 </div>
-<!-- /.container-fluid -->
 
-<!-- jQuery -->
-<script src="<?= base_url('main_assets/assets/vendor/jquery/jquery.min.js') ?>"></script>
-
-<!-- Bootstrap JS -->
-<script src="<?= base_url('main_assets/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-
-<!-- SB Admin 2 JS -->
-<script src="<?= base_url('main_assets/assets/js/sb-admin-2.min.js') ?>"></script>
-
-<!-- DataTables JS -->
-<script src="<?= base_url('main_assets/assets/vendor/datatables/jquery.dataTables.min.js') ?>"></script>
-<script src="<?= base_url('main_assets/assets/vendor/datatables/dataTables.bootstrap4.min.js') ?>"></script>
 
 <script>
 $(document).ready(function() {
